@@ -139,4 +139,3 @@ class Category
         return $this->createdAt;
     }
 }
-

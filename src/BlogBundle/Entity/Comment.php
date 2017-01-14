@@ -110,4 +110,3 @@ class Comment
         return $this->postedAt;
     }
 }
-

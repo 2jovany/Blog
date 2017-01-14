@@ -18,4 +18,7 @@ BlogBundle\Entity\Category:
             length: 255
         content:
             type: text
+        createdAt:
+            type: datetime
+            column: created_at
     lifecycleCallbacks: {  }

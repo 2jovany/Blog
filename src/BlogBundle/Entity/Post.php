@@ -132,10 +132,10 @@ class Post
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return string
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return $this->createdAt->format('Y-m-d H:i:s');
     }
 }

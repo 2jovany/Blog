@@ -13,6 +13,11 @@ class Post
     private $id;
 
     /**
+     * @var int
+     */
+    private $category_id;
+
+    /**
      * @var string
      */
     private $title;
@@ -41,6 +46,29 @@ class Post
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get category_id
+     *
+     * @return int
+     */
+    public function getCategoryId(){
+        return $this->category_id;
+    }
+
+    /**
+     * Set category_id
+     *
+     * @param int $category_id
+     *
+     * @return Post
+     */
+    public function setCategoryId($category_id)
+    {
+        $this->category_id = $category_id;
+
+        return $this;
     }
 
     /**

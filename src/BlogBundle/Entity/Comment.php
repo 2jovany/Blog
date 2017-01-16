@@ -13,6 +13,11 @@ class Comment
     private $id;
 
     /**
+     * @var int
+     */
+    private $post_id;
+
+    /**
      * @var string
      */
     private $author;
@@ -36,6 +41,26 @@ class Comment
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPostId()
+    {
+        return $this->post_id;
+    }
+
+    /**
+     * @param int $post_id
+     *
+     * @return Comment
+     */
+    public function setPostId($post_id)
+    {
+        $this->post_id = $post_id;
+
+        return $this;
     }
 
     /**

@@ -9,6 +9,9 @@ BlogBundle\Entity\Post:
             generator:
                 strategy: AUTO
     fields:
+        category_id:
+            type: integer
+            notnull: true
         title:
             type: string
             length: 255

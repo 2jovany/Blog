@@ -16,6 +16,7 @@ BlogBundle\Entity\Category:
         image:
             type: string
             length: 255
+            notnull: false
         content:
             type: text
         createdAt:

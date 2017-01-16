@@ -5,7 +5,7 @@
         <h2>{{ category.title }} </h2>
         <h5>at {{ category.createdAt | lower }}</h5>
         <p>{{ category.content }}</p>
-        <a href="{{ path('blog_category_posts', {id: category.id}) }}">View posts</a>
+        <a href="{{ path('blog_posts', {id: category.id}) }}">View posts</a>
     {% endfor %}
 
 {% endblock %}

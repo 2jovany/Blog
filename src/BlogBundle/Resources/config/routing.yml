@@ -1,3 +1,9 @@
 blog_homepage:
     path:     /
-    defaults: { _controller: BlogBundle:Default:index }
+    defaults: { _controller: BlogBundle:Default:category }
+
+blog_category_posts:
+    path:     /{id}
+    defaults: { _controller: BlogBundle:Default:posts }
+    requirements:
+        id:   \d

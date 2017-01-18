@@ -10,4 +10,12 @@ namespace BlogBundle\Repository;
  */
 class CategoryRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getIdArrayByName($name)
+    {
+        return $this->getEntityManager()
+            ->createQuery("SELECT c.id FROM BlogBundle:Category c
+                              WHERE c.title LIKE :name")
+            ->setParameter('name', '%' . $name . '%')
+            ->getResult();
+    }
 }

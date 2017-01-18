@@ -1,0 +1,6 @@
+{% block search %}
+    <form action="{{ path('blog_search') }}" method="post" class="form-search">
+        <input type="text" name="search" class="input-medium search-query">
+        <input type="submit" class="btn" value="Find">
+    </form>
+{% endblock %}

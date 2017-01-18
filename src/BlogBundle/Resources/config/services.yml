@@ -2,3 +2,12 @@ services:
 #    blog.example:
 #        class: BlogBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+    category_repository:
+        class: BlogBundle\Repository\CategoryRepository
+        factory: doctrine.orm.default_entity_manager:getRepository
+        arguments:
+          - BlogBundle:Category
+
+    search:
+        class: BlogBundle\Lib\Search\Search
+        arguments: ['@category_repository']

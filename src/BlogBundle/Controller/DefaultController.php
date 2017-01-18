@@ -2,13 +2,11 @@
 
 namespace BlogBundle\Controller;
 
-//use BlogBundle\Lib\Search\Search; //service
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
-    protected $requestStack;
-
     public function indexAction()
     {
         $posts = $this->getDoctrine()
@@ -32,25 +30,18 @@ class DefaultController extends Controller
         $posts = $this->getDoctrine()
             ->getRepository('BlogBundle:Post')
             ->findBy(array('category_id' => $id));
+
         return $this->render('BlogBundle:Default:index.html.twig', array('posts'=>$posts));
     }
 
-    public function searchAction()
+    public function searchAction(Request $request)
     {
-
-//        $search = new Search(); //service
         $search = $this->get('search');
-        $result = $search->search($this->get('request_stack')->getCurrentRequest());
+        $result = $search->search($request->request->get('search'));
 
         $repository = $this->getDoctrine()
             ->getRepository('BlogBundle:Category');
-
-        $query = $repository->createQueryBuilder('c')
-            ->where('c.id IN (:ids)')
-            ->setParameter(':ids',$result)
-            ->getQuery();
-
-        $categories = $query->getResult();
+        $categories = $repository->getByIdArray($result);
 
         return $this->render('BlogBundle:Default:categories.html.twig', array('categories'=>$categories));
     }

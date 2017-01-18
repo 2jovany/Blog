@@ -18,4 +18,13 @@ class CategoryRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('name', '%' . $name . '%')
             ->getResult();
     }
+
+    public function getByIdArray($arrayId)
+    {
+        return $this->createQueryBuilder('c')
+            ->where('c.id IN (:ids)')
+            ->setParameter(':ids',$arrayId)
+            ->getQuery()
+            ->getResult();
+    }
 }

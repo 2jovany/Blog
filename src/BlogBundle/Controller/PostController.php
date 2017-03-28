@@ -16,8 +16,9 @@ class PostController extends Controller
      * Lists all post entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        /* before using pagination
         $em = $this->getDoctrine()->getManager();
 
         $posts = $em->getRepository('BlogBundle:Post')->findAll();
@@ -25,6 +26,22 @@ class PostController extends Controller
         return $this->render('post/index.html.twig', array(
             'posts' => $posts,
         ));
+        */
+
+        $em = $this->getDoctrine()->getManager();
+        $posts = $em->getRepository('BlogBundle:Post')->findAll();
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $posts, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+
+        // parameters to template
+        return $this->render('post/index.html.twig', array(
+            'posts' => $posts,
+            'pagination' => $pagination));
     }
 
     /**

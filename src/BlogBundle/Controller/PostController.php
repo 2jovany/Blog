@@ -18,16 +18,6 @@ class PostController extends Controller
      */
     public function indexAction(Request $request)
     {
-        /* before using pagination
-        $em = $this->getDoctrine()->getManager();
-
-        $posts = $em->getRepository('BlogBundle:Post')->findAll();
-
-        return $this->render('post/index.html.twig', array(
-            'posts' => $posts,
-        ));
-        */
-
         $em = $this->getDoctrine()->getManager();
         $posts = $em->getRepository('BlogBundle:Post')->findAll();
 
